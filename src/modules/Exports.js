@@ -219,7 +219,9 @@ class Exports {
             })
           } else {
             cat = axesUtils.getLabel(
-              w.config.chart.toolbar.export.csv.exportSelection ? w.globals.labels : w.globals.categoryLabels,
+              w.config.chart.toolbar.export.csv.exportSelection
+                ? w.globals.labels
+                : w.globals.categoryLabels,
               w.globals.timescaleLabels,
               0,
               i
@@ -310,9 +312,9 @@ class Exports {
           }
 
           if (w.config.chart.toolbar.export.csv.exportSelection) {
-            rows.maps((e,i) => {
-              if (e.indexOf(',') === 0) {
-                rows.splice(i, 1)
+            rows.maps((el, idx) => {
+              if (el.indexOf(',') === 0) {
+                rows.splice(idx, 1)
               }
             })
           }
