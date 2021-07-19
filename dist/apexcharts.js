@@ -3233,6 +3233,7 @@
                   columnDelimiter: ',',
                   headerCategory: 'category',
                   headerValue: 'value',
+                  exportSelection: true,
                   dateFormatter: function dateFormatter(timestamp) {
                     return new Date(timestamp).toDateString();
                   }
@@ -10342,7 +10343,7 @@
                   w: w
                 });
               } else {
-                cat = axesUtils.getLabel(w.globals.labels, w.globals.timescaleLabels, 0, i).text;
+                cat = axesUtils.getLabel(w.config.chart.toolbar.export.csv.exportSelection ? w.globals.labels : w.globals.categoryLabels, w.globals.timescaleLabels, 0, i).text;
               }
             } // datetime, but labels specified in categories or labels
 
@@ -10414,6 +10415,14 @@
 
               if (columns.length) {
                 rows.push(columns.join(columnDelimiter));
+              }
+
+              if (w.config.chart.toolbar.export.csv.exportSelection) {
+                rows.maps(function (el, idx) {
+                  if (el.indexOf(',') === 0) {
+                    rows.splice(idx, 1);
+                  }
+                });
               }
             }
           }
