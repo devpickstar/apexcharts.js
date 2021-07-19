@@ -10418,7 +10418,7 @@
               }
 
               if (w.config.chart.toolbar.export.csv.exportSelection) {
-                rows.maps(function (el, idx) {
+                rows.map(function (el, idx) {
                   if (el.indexOf(',') === 0) {
                     rows.splice(idx, 1);
                   }

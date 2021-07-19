@@ -269,8 +269,8 @@ class Exports {
               isTimeStamp(cat)
                 ? w.config.chart.toolbar.export.csv.dateFormatter(cat)
                 : Utils.isNumber(cat)
-                  ? cat
-                  : cat.split(columnDelimiter).join('')
+                ? cat
+                : cat.split(columnDelimiter).join('')
             )
 
             for (let ci = 0; ci < w.globals.series.length; ci++) {
