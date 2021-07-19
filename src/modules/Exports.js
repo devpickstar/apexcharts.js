@@ -219,7 +219,7 @@ class Exports {
             })
           } else {
             cat = axesUtils.getLabel(
-              w.globals.labels,
+              w.config.chart.toolbar.export.csv.exportSelection ? w.globals.labels : w.globals.categoryLabels,
               w.globals.timescaleLabels,
               0,
               i
@@ -307,6 +307,14 @@ class Exports {
 
           if (columns.length) {
             rows.push(columns.join(columnDelimiter))
+          }
+
+          if (w.config.chart.toolbar.export.csv.exportSelection) {
+            rows.maps((e,i) => {
+              if (e.indexOf(',') === 0) {
+                rows.splice(i, 1)
+              }
+            })
           }
         }
       }
